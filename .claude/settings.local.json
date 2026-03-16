@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cp -r \"D:\\\\Panaverse\\\\Q2\\\\skills_evaluater\\\\public\\\\skills\" \"D:\\\\Panaverse\\\\Q2\\\\skills_evaluater\\\\output\\\\skills\")"
+    ]
+  }
+}

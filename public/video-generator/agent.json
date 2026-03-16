@@ -1,0 +1,23 @@
+{
+  "name": "video-generator",
+  "version": "1.0.0",
+  "description": "Specialized agent for creating demo videos for AgentFactory platform",
+  "author": "Panaverse",
+  "license": "MIT",
+  "main": "index.js",
+  "skills": [
+    "find-skills",
+    "remotion-best-practices"
+  ],
+  "dependencies": {
+    "remotion": "^4.0.0",
+    "ffmpeg": "^0.0.4",
+    "puppeteer": "^22.0.0"
+  },
+  "config": {
+    "renderTimeout": 300000,
+    "maxConcurrentJobs": 3,
+    "outputFormat": "mp4",
+    "quality": "high"
+  }
+}

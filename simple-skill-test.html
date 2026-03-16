@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Skill Test</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --light-bg: #f8fafc;
+            --dark-text: #1e293b;
+            --border-color: #cbd5e1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: var(--light-bg);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+
+        h1 {
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark-text);
+        }
+
+        label.optional {
+            font-weight: normal;
+            font-style: italic;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #1d4ed8;
+        }
+
+        .optional-indicator {
+            color: #64748b;
+            font-size: 0.9em;
+            font-style: italic;
+        }
+
+        .results {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f0fdf4;
+            border-radius: 6px;
+            border-left: 4px solid #10b981;
+        }
+
+        .results.hidden {
+            display: none;
+        }
+
+        .metric {
+            margin: 10px 0;
+        }
+
+        .metric-value {
+            font-weight: bold;
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Skill Test</h1>
+
+        <form id="skill-test-form">
+            <!-- Required Fields -->
+            <div class="form-group">
+                <label for="skill-name">Skill Name *</label>
+                <input type="text" id="skill-name" name="name" required placeholder="Enter skill name">
+            </div>
+
+            <div class="form-group">
+                <label for="skill-description">Description *</label>
+                <textarea id="skill-description" name="description" required placeholder="Brief description of the skill"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="skill-type">Skill Type *</label>
+                <select id="skill-type" name="type" required>
+                    <option value="">Select type</option>
+                    <option value="development">Development</option>
+                    <option value="design">Design</option>
+                    <option value="testing">Testing</option>
+                    <option value="devops">DevOps</option>
+                    <option value="ai">AI/Machine Learning</option>
+                    <option value="video">Video/Audio</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <!-- Optional Fields -->
+            <div class="form-group">
+                <label for="skill-author" class="optional">Author (Optional)</label>
+                <span class="optional-indicator">Optional: Enter the author's name</span>
+                <input type="text" id="skill-author" name="author" placeholder="Author name">
+            </div>
+
+            <div class="form-group">
+                <label for="skill-version" class="optional">Version (Optional)</label>
+                <span class="optional-indicator">Optional: Enter version (default: 1.0.0)</span>
+                <input type="text" id="skill-version" name="version" placeholder="e.g., 1.0.0">
+            </div>
+
+            <div class="form-group">
+                <label for="skill-implementation" class="optional">Implementation Code (Optional)</label>
+                <span class="optional-indicator">Optional: Paste your skill implementation code</span>
+                <textarea id="skill-implementation" name="implementation" placeholder="Paste your skill code here (optional)"></textarea>
+            </div>
+
+            <button type="submit" class="btn">Test Skill</button>
+        </form>
+
+        <div id="results" class="results hidden">
+            <h3>Skill Evaluation Results</h3>
+            <div class="metric">Accuracy Score: <span id="accuracy-score" class="metric-value">0%</span></div>
+            <div class="metric">Performance Score: <span id="performance-score" class="metric-value">0%</span></div>
+            <div class="metric">Reliability Score: <span id="reliability-score" class="metric-value">0%</span></div>
+            <div class="metric">Usability Score: <span id="usability-score" class="metric-value">0%</span></div>
+            <div class="metric">Overall Score: <span id="overall-score" class="metric-value">0%</span></div>
+            <div id="recommendations"></div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('skill-test-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get form data
+            const formData = new FormData(this);
+            const skillData = {
+                name: formData.get('name'),
+                description: formData.get('description'),
+                type: formData.get('type'),
+                author: formData.get('author') || 'Anonymous',
+                version: formData.get('version') || '1.0.0',
+                implementation: formData.get('implementation') || 'Not provided'
+            };
+
+            // Simulate evaluation process
+            simulateEvaluation(skillData);
+        });
+
+        function simulateEvaluation(skillData) {
+            // Show results section
+            document.getElementById('results').classList.remove('hidden');
+
+            // Generate random scores for demonstration
+            const accuracy = Math.floor(Math.random() * 30) + 70; // 70-99%
+            const performance = Math.floor(Math.random() * 30) + 70; // 70-99%
+            const reliability = Math.floor(Math.random() * 30) + 70; // 70-99%
+            const usability = Math.floor(Math.random() * 30) + 70; // 70-99%
+
+            const overall = Math.round((accuracy + performance + reliability + usability) / 4);
+
+            // Update results
+            document.getElementById('accuracy-score').textContent = accuracy + '%';
+            document.getElementById('performance-score').textContent = performance + '%';
+            document.getElementById('reliability-score').textContent = reliability + '%';
+            document.getElementById('usability-score').textContent = usability + '%';
+            document.getElementById('overall-score').textContent = overall + '%';
+
+            // Generate recommendations
+            let recommendations = '<h4>Recommendations:</h4><ul>';
+            if (accuracy < 85) recommendations += '<li>Consider improving the skill\'s accuracy in meeting requirements</li>';
+            if (performance < 85) recommendations += '<li>Optimize performance for better execution times</li>';
+            if (reliability < 85) recommendations += '<li>Enhance error handling and reliability</li>';
+            if (usability < 85) recommendations += '<li>Improve documentation and parameter validation</li>';
+            if (accuracy >= 85 && performance >= 85 && reliability >= 85 && usability >= 85) {
+                recommendations += '<li>Great job! The skill meets all quality standards.</li>';
+            }
+            recommendations += '</ul>';
+
+            document.getElementById('recommendations').innerHTML = recommendations;
+
+            // Scroll to results
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

@@ -1,55 +1,35 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+# Skills Evaluator Constitution
+<!-- Independent skill evaluation system -->
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Assessment-First Approach
+Skills evaluation begins with clearly defined assessment criteria and rubrics; All evaluations must have measurable, objective scoring mechanisms; Each skill assessment must include validation tests and benchmarks.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Modular Evaluation Framework
+Each skill evaluator operates as an independent module; Evaluators must be self-contained, testable, and reusable; Clear interfaces required - no tight coupling between evaluators.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Test-Driven Evaluation (NON-NEGOTIABLE)
+TDD mandatory: Evaluation criteria defined → Scoring mechanisms tested → Assessments validated → Then implement; Red-Green-Refactor cycle strictly enforced for evaluation logic.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Comprehensive Skill Coverage
+Focus areas requiring evaluation: Technical competency assessment, Practical application tests, Problem-solving demonstrations, Real-world scenario simulations.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Transparency and Fairness
+All evaluation criteria must be transparent and accessible; Standardized scoring methodology required; Bias mitigation protocols must be implemented; Audit trails for all assessments.
 
-### [PRINCIPLE_6_NAME]
+### VI. Scalable Architecture
 
 
-[PRINCIPLE__DESCRIPTION]
+Modular design supporting multiple evaluation types; Configurable difficulty levels and adaptive assessment paths; Efficient resource utilization for concurrent evaluations.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+## Additional Constraints
+Technology stack: Node.js, TypeScript, or Python for evaluation engines; Compliance with academic integrity standards; Secure assessment delivery and result storage; Performance: sub-second response times for basic evaluations.
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
-
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
-
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+## Development Workflow
+Code review requirements: All evaluation logic must be peer-reviewed; Testing gates: 90% code coverage minimum; Deployment approval: Assessment accuracy validation required; Result integrity checks must pass.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
+Constitution supersedes all other practices; Amendments require documentation and approval; All PRs/reviews must verify compliance; Complexity must be justified; Use this constitution for development guidance.
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
-
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2026-03-13 | **Last Amended**: 2026-03-13
