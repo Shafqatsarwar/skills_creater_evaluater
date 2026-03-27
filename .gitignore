@@ -1,0 +1,47 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Build output
+dist/
+
+# TypeScript build info
+*.tsbuildinfo
+
+# Test coverage
+coverage/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Qwen
+.qwen/
+
+# History (if not needed in repo)
+history/
+
+# Output (generated files)
+output/
+
+# Temporary files
+tmp/
+temp/

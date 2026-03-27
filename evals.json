@@ -1,0 +1,502 @@
+{
+  "evaluations": [
+    {
+      "id": "js-fundamentals-eval",
+      "skillName": "javascript-fundamentals",
+      "title": "JavaScript Fundamentals Evaluation",
+      "description": "Evaluate basic JavaScript knowledge and skills",
+      "categories": [
+        {
+          "name": "Syntax and Basics",
+          "weight": 0.25,
+          "criteria": [
+            {
+              "id": "variable-declaration",
+              "description": "Proper use of var, let, const",
+              "maxScore": 10
+            },
+            {
+              "id": "data-types",
+              "description": "Understanding of primitive and complex data types",
+              "maxScore": 10
+            },
+            {
+              "id": "operators",
+              "description": "Correct use of operators",
+              "maxScore": 10
+            }
+          ]
+        },
+        {
+          "name": "Functions and Scope",
+          "weight": 0.25,
+          "criteria": [
+            {
+              "id": "function-definition",
+              "description": "Ability to define functions properly",
+              "maxScore": 10
+            },
+            {
+              "id": "scope-understanding",
+              "description": "Understanding of lexical scoping",
+              "maxScore": 10
+            },
+            {
+              "id": "closure-concept",
+              "description": "Understanding of closures",
+              "maxScore": 10
+            }
+          ]
+        },
+        {
+          "name": "Objects and Arrays",
+          "weight": 0.25,
+          "criteria": [
+            {
+              "id": "object-manipulation",
+              "description": "Working with objects",
+              "maxScore": 10
+            },
+            {
+              "id": "array-methods",
+              "description": "Using array methods effectively",
+              "maxScore": 10
+            },
+            {
+              "id": "destructuring",
+              "description": "Using destructuring appropriately",
+              "maxScore": 10
+            }
+          ]
+        },
+        {
+          "name": "Modern JavaScript",
+          "weight": 0.25,
+          "criteria": [
+            {
+              "id": "promises",
+              "description": "Understanding of Promises and async/await",
+              "maxScore": 10
+            },
+            {
+              "id": "modules",
+              "description": "Using ES6 modules",
+              "maxScore": 10
+            },
+            {
+              "id": "error-handling",
+              "description": "Proper error handling",
+              "maxScore": 10
+            }
+          ]
+        }
+      ],
+      "gradingScale": {
+        "A": {
+          "minPercentage": 90,
+          "description": "Excellent understanding"
+        },
+        "B": {
+          "minPercentage": 80,
+          "description": "Good understanding"
+        },
+        "C": {
+          "minPercentage": 70,
+          "description": "Satisfactory understanding"
+        },
+        "D": {
+          "minPercentage": 60,
+          "description": "Below expectations"
+        },
+        "F": {
+          "minPercentage": 0,
+          "description": "Needs significant improvement"
+        }
+      }
+    },
+    {
+      "id": "react-eval",
+      "skillName": "react-development",
+      "title": "React Development Evaluation",
+      "description": "Evaluate React development skills and best practices",
+      "categories": [
+        {
+          "name": "Component Development",
+          "weight": 0.3,
+          "criteria": [
+            {
+              "id": "component-structure",
+              "description": "Proper component structure and organization",
+              "maxScore": 15
+            },
+            {
+              "id": "props-handling",
+              "description": "Effective use of props",
+              "maxScore": 15
+            },
+            {
+              "id": "state-management",
+              "description": "Proper state management",
+              "maxScore": 20
+            }
+          ]
+        },
+        {
+          "name": "Hooks and Lifecycle",
+          "weight": 0.3,
+          "criteria": [
+            {
+              "id": "useState-use",
+              "description": "Appropriate use of useState hook",
+              "maxScore": 10
+            },
+            {
+              "id": "useEffect-use",
+              "description": "Appropriate use of useEffect hook",
+              "maxScore": 15
+            },
+            {
+              "id": "custom-hooks",
+              "description": "Creation and use of custom hooks",
+              "maxScore": 15
+            }
+          ]
+        },
+        {
+          "name": "Performance and Best Practices",
+          "weight": 0.25,
+          "criteria": [
+            {
+              "id": "optimization",
+              "description": "Performance optimizations",
+              "maxScore": 15
+            },
+            {
+              "id": "code-quality",
+              "description": "Code quality and readability",
+              "maxScore": 15
+            },
+            {
+              "id": "testing",
+              "description": "Implementation of proper testing",
+              "maxScore": 10
+            }
+          ]
+        },
+        {
+          "name": "Advanced Concepts",
+          "weight": 0.15,
+          "criteria": [
+            {
+              "id": "context-api",
+              "description": "Understanding of Context API",
+              "maxScore": 10
+            },
+            {
+              "id": "refs-understanding",
+              "description": "Proper use of refs",
+              "maxScore": 10
+            },
+            {
+              "id": "render-props",
+              "description": "Understanding of render props pattern",
+              "maxScore": 10
+            }
+          ]
+        }
+      ],
+      "gradingScale": {
+        "A": {
+          "minPercentage": 90,
+          "description": "Expert level React development"
+        },
+        "B": {
+          "minPercentage": 80,
+          "description": "Proficient React development"
+        },
+        "C": {
+          "minPercentage": 70,
+          "description": "Competent React development"
+        },
+        "D": {
+          "minPercentage": 60,
+          "description": "Basic React understanding"
+        },
+        "F": {
+          "minPercentage": 0,
+          "description": "Needs significant React training"
+        }
+      }
+    },
+    {
+      "id": "node-js-eval",
+      "skillName": "nodejs-backend",
+      "title": "Node.js Backend Development Evaluation",
+      "description": "Evaluate Node.js backend development skills",
+      "categories": [
+        {
+          "name": "Core Concepts",
+          "weight": 0.3,
+          "criteria": [
+            {
+              "id": "event-loop",
+              "description": "Understanding of event loop",
+              "maxScore": 15
+            },
+            {
+              "id": "modules-system",
+              "description": "Using Node.js modules effectively",
+              "maxScore": 15
+            },
+            {
+              "id": "stream-handling",
+              "description": "Working with streams",
+              "maxScore": 10
+            }
+          ]
+        },
+        {
+          "name": "Express and APIs",
+          "weight": 0.35,
+          "criteria": [
+            {
+              "id": "routing",
+              "description": "Proper routing implementation",
+              "maxScore": 15
+            },
+            {
+              "id": "middleware",
+              "description": "Using middleware effectively",
+              "maxScore": 15
+            },
+            {
+              "id": "rest-api",
+              "description": "Building RESTful APIs",
+              "maxScore": 20
+            }
+          ]
+        },
+        {
+          "name": "Database and Async",
+          "weight": 0.2,
+          "criteria": [
+            {
+              "id": "database-integration",
+              "description": "Connecting to databases",
+              "maxScore": 15
+            },
+            {
+              "id": "async-patterns",
+              "description": "Using async patterns correctly",
+              "maxScore": 15
+            }
+          ]
+        },
+        {
+          "name": "Security and Deployment",
+          "weight": 0.15,
+          "criteria": [
+            {
+              "id": "security-measures",
+              "description": "Implementing security measures",
+              "maxScore": 10
+            },
+            {
+              "id": "deployment-readiness",
+              "description": "Preparing for production deployment",
+              "maxScore": 10
+            },
+            {
+              "id": "error-handling",
+              "description": "Robust error handling",
+              "maxScore": 10
+            }
+          ]
+        }
+      ],
+      "gradingScale": {
+        "A": {
+          "minPercentage": 90,
+          "description": "Expert Node.js backend developer"
+        },
+        "B": {
+          "minPercentage": 80,
+          "description": "Proficient Node.js backend developer"
+        },
+        "C": {
+          "minPercentage": 70,
+          "description": "Competent Node.js backend developer"
+        },
+        "D": {
+          "minPercentage": 60,
+          "description": "Basic Node.js backend understanding"
+        },
+        "F": {
+          "minPercentage": 0,
+          "description": "Needs significant Node.js backend training"
+        }
+      }
+    },
+    {
+      "id": "eval-1774565330485",
+      "timestamp": "2026-03-26T22:48:50.485Z",
+      "assignmentId": "assignment-001",
+      "studentId": "student-456",
+      "score": 10,
+      "maxPoints": 10,
+      "percentage": 100,
+      "feedback": "Your submission for assignment assignment-001 has been evaluated. Excellent work! Your solution demonstrates strong understanding. Specifically for JavaScript, your implementation shows good effort. As an intermediate learner, try incorporating more advanced patterns.",
+      "suggestions": [
+        "Consider more efficient algorithms or design patterns",
+        "Review best practices for code organization"
+      ],
+      "grade": "A",
+      "evaluationDetails": {
+        "criterionScores": [
+          {
+            "criterion": "Correctness",
+            "earnedPoints": 5,
+            "maxPoints": 5,
+            "feedback": "Met the requirements for Correctness"
+          },
+          {
+            "criterion": "Code Style",
+            "earnedPoints": 3,
+            "maxPoints": 3,
+            "feedback": "Met the requirements for Code Style"
+          },
+          {
+            "criterion": "Efficiency",
+            "earnedPoints": 2,
+            "maxPoints": 2,
+            "feedback": "Basic efficiency check completed"
+          }
+        ]
+      }
+    },
+    {
+      "id": "eval-1774565330494",
+      "timestamp": "2026-03-26T22:48:50.494Z",
+      "assignmentId": "assignment-002",
+      "studentId": "student-789",
+      "score": 8.2,
+      "maxPoints": 10,
+      "percentage": 82,
+      "feedback": "Your submission for assignment assignment-002 has been evaluated. Good job! Your solution meets most requirements. Specifically for Python, your implementation shows good effort. As a beginner, focus on understanding the fundamental concepts.",
+      "suggestions": [
+        "Fix the following syntax issues: Inconsistent indentation detected",
+        "Improve in Documentation: Could use more documentation/comments",
+        "Review fundamental concepts related to this assignment",
+        "Practice with simpler examples before attempting complex problems"
+      ],
+      "grade": "B",
+      "evaluationDetails": {
+        "criterionScores": [
+          {
+            "criterion": "Correctness",
+            "earnedPoints": 5.5,
+            "maxPoints": 6,
+            "feedback": "Has syntax issues but meets basic functionality: Inconsistent indentation detected"
+          },
+          {
+            "criterion": "Code Style",
+            "earnedPoints": 1.7,
+            "maxPoints": 2,
+            "feedback": "Could improve style based on syntax issues: Inconsistent indentation detected"
+          },
+          {
+            "criterion": "Documentation",
+            "earnedPoints": 1,
+            "maxPoints": 2,
+            "feedback": "Could use more documentation/comments"
+          }
+        ]
+      }
+    },
+    {
+      "id": "eval-1774649961133",
+      "timestamp": "2026-03-27T22:19:21.133Z",
+      "assignmentId": "assignment-001",
+      "studentId": "student-456",
+      "score": 10,
+      "maxPoints": 10,
+      "percentage": 100,
+      "feedback": "Your submission for assignment assignment-001 has been evaluated. Excellent work! Your solution demonstrates strong understanding. Specifically for JavaScript, your implementation shows good effort. As an intermediate learner, try incorporating more advanced patterns.",
+      "suggestions": [
+        "Consider more efficient algorithms or design patterns",
+        "Review best practices for code organization"
+      ],
+      "grade": "A",
+      "evaluationDetails": {
+        "criterionScores": [
+          {
+            "criterion": "Correctness",
+            "earnedPoints": 5,
+            "maxPoints": 5,
+            "feedback": "Met the requirements for Correctness"
+          },
+          {
+            "criterion": "Code Style",
+            "earnedPoints": 3,
+            "maxPoints": 3,
+            "feedback": "Met the requirements for Code Style"
+          },
+          {
+            "criterion": "Efficiency",
+            "earnedPoints": 2,
+            "maxPoints": 2,
+            "feedback": "Basic efficiency check completed"
+          }
+        ]
+      }
+    },
+    {
+      "id": "eval-1774649961141",
+      "timestamp": "2026-03-27T22:19:21.141Z",
+      "assignmentId": "assignment-002",
+      "studentId": "student-789",
+      "score": 8.2,
+      "maxPoints": 10,
+      "percentage": 82,
+      "feedback": "Your submission for assignment assignment-002 has been evaluated. Good job! Your solution meets most requirements. Specifically for Python, your implementation shows good effort. As a beginner, focus on understanding the fundamental concepts.",
+      "suggestions": [
+        "Fix the following syntax issues: Inconsistent indentation detected",
+        "Improve in Documentation: Could use more documentation/comments",
+        "Review fundamental concepts related to this assignment",
+        "Practice with simpler examples before attempting complex problems"
+      ],
+      "grade": "B",
+      "evaluationDetails": {
+        "criterionScores": [
+          {
+            "criterion": "Correctness",
+            "earnedPoints": 5.5,
+            "maxPoints": 6,
+            "feedback": "Has syntax issues but meets basic functionality: Inconsistent indentation detected"
+          },
+          {
+            "criterion": "Code Style",
+            "earnedPoints": 1.7,
+            "maxPoints": 2,
+            "feedback": "Could improve style based on syntax issues: Inconsistent indentation detected"
+          },
+          {
+            "criterion": "Documentation",
+            "earnedPoints": 1,
+            "maxPoints": 2,
+            "feedback": "Could use more documentation/comments"
+          }
+        ]
+      }
+    }
+  ],
+  "skills": [
+    {
+      "name": "personal-tutor",
+      "version": "1.0.0",
+      "description": "Personal Tutor skill that evaluates student submissions and provides personalized feedback",
+      "author": "Panaverse",
+      "createdDate": "2026-03-26T22:48:50.486Z"
+    }
+  ]
+}

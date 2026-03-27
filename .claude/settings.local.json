@@ -1,7 +1,17 @@
 {
   "permissions": {
     "allow": [
-      "Bash(cp -r \"D:\\\\Panaverse\\\\Q2\\\\skills_evaluater\\\\public\\\\skills\" \"D:\\\\Panaverse\\\\Q2\\\\skills_evaluater\\\\output\\\\skills\")"
+      "Bash(cp -r \"D:\\\\Panaverse\\\\Q2\\\\skills_evaluater\\\\public\\\\skills\" \"D:\\\\Panaverse\\\\Q2\\\\skills_evaluater\\\\output\\\\skills\")",
+      "Bash(npm test:*)",
+      "Bash(npm run:*)",
+      "Bash(npm install:*)",
+      "Bash(ls:*)",
+      "Bash(npx ts-node:*)",
+      "Bash(node:*)",
+      "Bash(npm start:*)",
+      "Bash(curl:*)",
+      "Bash(pkill -f \"node dist/index.js\")",
+      "Bash(pkill -f node)"
     ]
   }
 }

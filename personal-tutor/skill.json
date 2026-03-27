@@ -1,0 +1,145 @@
+{
+  "name": "personal-tutor",
+  "version": "1.0.0",
+  "description": "Personal Tutor skill that evaluates student submissions and provides personalized feedback",
+  "author": "Panaverse",
+  "license": "MIT",
+  "entrypoint": "./index.ts",
+  "dependencies": [
+    "typescript",
+    "express"
+  ],
+  "evaluationCriteria": {
+    "accuracy": {
+      "description": "How accurately the tutor evaluates student submissions",
+      "benchmark": 0.95
+    },
+    "feedbackQuality": {
+      "description": "Quality and helpfulness of the feedback provided",
+      "benchmark": 0.90
+    },
+    "responseTime": {
+      "description": "Speed of evaluation and feedback delivery",
+      "benchmark": 5000
+    },
+    "adaptability": {
+      "description": "Ability to adapt feedback to student's level",
+      "benchmark": 0.85
+    }
+  },
+  "parameters": {
+    "studentSubmission": {
+      "type": "object",
+      "description": "Student's assignment submission",
+      "required": true,
+      "properties": {
+        "assignmentId": {
+          "type": "string",
+          "description": "Unique identifier for the assignment"
+        },
+        "studentId": {
+          "type": "string",
+          "description": "Unique identifier for the student"
+        },
+        "content": {
+          "type": "string",
+          "description": "The actual submission content"
+        },
+        "language": {
+          "type": "string",
+          "description": "Programming language used in submission",
+          "enum": ["javascript", "python", "java", "typescript", "html", "css"]
+        }
+      }
+    },
+    "rubric": {
+      "type": "object",
+      "description": "Grading rubric for the assignment",
+      "required": true,
+      "properties": {
+        "criteria": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "points": {
+                "type": "number"
+              },
+              "description": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "maxPoints": {
+          "type": "number"
+        }
+      }
+    },
+    "studentProfile": {
+      "type": "object",
+      "description": "Information about the student's skill level",
+      "properties": {
+        "experienceLevel": {
+          "type": "string",
+          "enum": ["beginner", "intermediate", "advanced"],
+          "default": "beginner"
+        },
+        "pastPerformance": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "assignmentId": {
+                "type": "string"
+              },
+              "score": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "examples": [
+    {
+      "title": "Basic Student Submission Evaluation",
+      "parameters": {
+        "studentSubmission": {
+          "assignmentId": "assignment-001",
+          "studentId": "student-123",
+          "content": "function add(a, b) { return a + b; }",
+          "language": "javascript"
+        },
+        "rubric": {
+          "criteria": [
+            {
+              "name": "Correctness",
+              "points": 5,
+              "description": "Function correctly adds two numbers"
+            },
+            {
+              "name": "Code Style",
+              "points": 3,
+              "description": "Code follows style guidelines"
+            }
+          ],
+          "maxPoints": 8
+        },
+        "studentProfile": {
+          "experienceLevel": "beginner",
+          "pastPerformance": [
+            {
+              "assignmentId": "assignment-000",
+              "score": 7
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

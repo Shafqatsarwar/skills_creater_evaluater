@@ -1,0 +1,18 @@
+{
+  "userId": "test-user-123",
+  "answers": [
+    {
+      "questionId": "q1",
+      "response": "const"
+    },
+    {
+      "questionId": "q2",
+      "response": ["String", "Number", "Boolean", "Undefined"]
+    },
+    {
+      "questionId": "q3",
+      "response": "function sum(arr) { return arr.reduce((a, b) => a + b, 0); }"
+    }
+  ],
+  "timestamp": "2026-03-27T22:30:00.000Z"
+}

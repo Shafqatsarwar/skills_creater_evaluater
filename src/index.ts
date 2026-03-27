@@ -6,6 +6,7 @@
  */
 
 import express from 'express';
+import path from 'path';
 import { AssessmentEngine } from './engine/assessment-engine';
 import { AssessmentManager } from './manager/assessment-manager';
 import { ResultProcessor } from './processor/result-processor';
@@ -17,11 +18,17 @@ const port = process.env.PORT || 3000;
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, '..')));
 
 // Initialize core components
 const assessmentEngine = new AssessmentEngine();
 const assessmentManager = new AssessmentManager();
 const resultProcessor = new ResultProcessor();
+
+// Root route - serve the UI
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'skills-ui-modern.html'));
+});
 
 // API Routes
 app.get('/api/health', (req, res) => {
