@@ -1,0 +1,49 @@
+{
+  "skills": [
+    {
+      "name": "email writer",
+      "description": "simple email writer",
+      "type": "utility",
+      "category": "communication",
+      "implementation": "i need help to write email to my bussiness clients, banks, friends, famil etc",
+      "evaluationCriteria": {
+        "accuracy": 0.9,
+        "performance": 100,
+        "reliability": 0.95,
+        "usability": 0.8
+      },
+      "version": "1.0.0",
+      "status": "active",
+      "evaluations": 0,
+      "createdAt": "2026-03-28T00:06:04.544Z"
+    }
+  ],
+  "evaluations": [
+    {
+      "skillName": "excellence-video-generator",
+      "content": "test this video genrator works perfectly with voice ove and subtitles in urdo english both",
+      "scores": {
+        "accuracy": 91,
+        "performance": -2,
+        "reliability": 88,
+        "usability": 89
+      },
+      "totalScore": 67,
+      "grade": "D",
+      "timestamp": "2026-03-28T00:01:12.204Z"
+    },
+    {
+      "skillName": "excellence-video-generator",
+      "content": "test this video genrator works perfectly with voice ove and subtitles in urdo english both",
+      "scores": {
+        "accuracy": 92,
+        "performance": -4,
+        "reliability": 87,
+        "usability": 88
+      },
+      "totalScore": 66,
+      "grade": "D",
+      "timestamp": "2026-03-28T00:01:35.980Z"
+    }
+  ]
+}
