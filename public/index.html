@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Skills Evaluator - AI-Era Assessment</title>
+  <style>
+    :root {
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --secondary: #10b981;
+      --danger: #ef4444;
+      --warning: #f59e0b;
+      --bg: #0f172a;
+      --bg-card: #1e293b;
+      --bg-hover: #334155;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --border: #334155;
+      --success: #22c55e;
+      --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      --gradient-4: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    .header {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: var(--gradient-1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .logo-icon {
+      font-size: 2rem;
+    }
+
+    .nav {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-btn {
+      padding: 0.5rem 1.5rem;
+      border-radius: 8px;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 0.95rem;
+    }
+
+    .nav-btn:hover, .nav-btn.active {
+      background: var(--primary);
+      color: var(--text);
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    /* Stats Cards */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border-radius: 12px;
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .stat-card.gradient-1 { background: var(--gradient-1); }
+    .stat-card.gradient-2 { background: var(--gradient-2); }
+    .stat-card.gradient-3 { background: var(--gradient-3); }
+    .stat-card.gradient-4 { background: var(--gradient-4); }
+
+    .stat-value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    /* Action Buttons */
+    .actions {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: var(--text);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: var(--secondary);
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      background: #059669;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--border);
+      color: var(--text);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--primary);
+      background: var(--primary);
+    }
+
+    /* Search & Filter */
+    .filters {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .search-box {
+      flex: 1;
+      min-width: 250px;
+      position: relative;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 0.75rem 1rem 0.75rem 2.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text);
+      font-size: 0.95rem;
+    }
+
+    .search-box input:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+    }
+
+    .filter-select {
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text);
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .skill-card {
+      background: var(--bg-card);
+      border-radius: 12px;
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .skill-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+    }
+
+    .skill-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+    }
+
+    .skill-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .skill-badge {
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .badge-foundational { background: #3b82f6; }
+    .badge-intermediate { background: #10b981; }
+    .badge-advanced { background: #f59e0b; }
+    .badge-expert { background: #ef4444; }
+
+    .skill-description {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+
+    .skill-meta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .skill-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .skill-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      background: var(--bg-hover);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal {
+      background: var(--bg-card);
+      border-radius: 16px;
+      padding: 2rem;
+      max-width: 800px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+      transform: translateY(-20px);
+      transition: transform 0.3s;
+    }
+
+    .modal-overlay.active .modal {
+      transform: translateY(0);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    .close-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .close-btn:hover {
+      color: var(--text);
+    }
+
+    /* Form Styles */
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      font-size: 0.95rem;
+      font-family: inherit;
+    }
+
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    .form-textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    /* Evaluations Table */
+    .evaluations-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    .evaluations-table th,
+    .evaluations-table td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .evaluations-table th {
+      background: var(--bg-hover);
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .evaluations-table tr:hover {
+      background: var(--bg-hover);
+    }
+
+    .grade-badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    .grade-A { background: #22c55e; color: white; }
+    .grade-B { background: #3b82f6; color: white; }
+    .grade-C { background: #f59e0b; color: white; }
+    .grade-D { background: #ef4444; color: white; }
+    .grade-F { background: #7f1d1d; color: white; }
+
+    /* Loading Spinner */
+    .spinner {
+      border: 3px solid var(--border);
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 2rem auto;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Empty State */
+    .empty-state {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: var(--text-muted);
+    }
+
+    .empty-state-icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Toast Notifications */
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s;
+      z-index: 2000;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .toast.success { border-left: 4px solid var(--success); }
+    .toast.error { border-left: 4px solid var(--danger); }
+    .toast.warning { border-left: 4px solid var(--warning); }
+
+    /* Section Tabs */
+    .tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.5rem;
+    }
+
+    .tab {
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px 8px 0 0;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.3s;
+      font-weight: 600;
+    }
+
+    .tab:hover {
+      background: var(--bg-hover);
+    }
+
+    .tab.active {
+      background: var(--primary);
+      color: var(--text);
+    }
+
+    .section {
+      display: none;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header {
+        padding: 1rem;
+      }
+
+      .nav {
+        display: none;
+      }
+
+      .container {
+        padding: 1rem;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">
+      <span class="logo-icon">🎯</span>
+      <span>Skills Evaluator</span>
+    </div>
+    <nav class="nav">
+      <button class="nav-btn active" onclick="switchTab('dashboard')">Dashboard</button>
+      <button class="nav-btn" onclick="switchTab('skills')">Skills</button>
+      <button class="nav-btn" onclick="switchTab('evaluations')">Evaluations</button>
+      <button class="nav-btn" onclick="switchTab('create')">Create Skill</button>
+    </nav>
+  </header>
+
+  <!-- Main Container -->
+  <div class="container">
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="section active">
+      <div class="stats-grid">
+        <div class="stat-card gradient-1">
+          <div class="stat-value" id="total-skills">0</div>
+          <div class="stat-label">Total Skills</div>
+        </div>
+        <div class="stat-card gradient-2">
+          <div class="stat-value" id="total-evaluations">0</div>
+          <div class="stat-label">Evaluations</div>
+        </div>
+        <div class="stat-card gradient-3">
+          <div class="stat-value" id="avg-score">0%</div>
+          <div class="stat-label">Average Score</div>
+        </div>
+        <div class="stat-card gradient-4">
+          <div class="stat-value" id="pass-rate">0%</div>
+          <div class="stat-label">Pass Rate</div>
+        </div>
+      </div>
+
+      <h2 style="margin-bottom: 1.5rem;">Quick Actions</h2>
+      <div class="actions">
+        <button class="btn btn-primary" onclick="showCreateSkillModal()">
+          <span>➕</span> Create New Skill
+        </button>
+        <button class="btn btn-secondary" onclick="importTemplate()">
+          <span>📥</span> Import from Template
+        </button>
+        <button class="btn btn-outline" onclick="loadSkills()">
+          <span>🔄</span> Refresh Data
+        </button>
+      </div>
+
+      <h2 style="margin-bottom: 1.5rem;">Recent Skills</h2>
+      <div id="recent-skills" class="skills-grid">
+        <!-- Skills will be loaded here -->
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+      <h2 style="margin-bottom: 1.5rem;">All Skills</h2>
+
+      <div class="filters">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input
+            type="text"
+            id="skill-search"
+            placeholder="Search skills..."
+            oninput="filterSkills()"
+          >
+        </div>
+        <select class="filter-select" id="category-filter" onchange="filterSkills()">
+          <option value="">All Categories</option>
+          <option value="ai-ml">AI/ML</option>
+          <option value="web-development">Web Development</option>
+          <option value="prompt-engineering">Prompt Engineering</option>
+          <option value="ai-integration">AI Integration</option>
+          <option value="data-science">Data Science</option>
+        </select>
+        <select class="filter-select" id="level-filter" onchange="filterSkills()">
+          <option value="">All Levels</option>
+          <option value="foundational">Foundational</option>
+          <option value="intermediate">Intermediate</option>
+          <option value="advanced">Advanced</option>
+          <option value="expert">Expert</option>
+        </select>
+      </div>
+
+      <div id="skills-list" class="skills-grid">
+        <!-- Skills will be loaded here -->
+      </div>
+    </section>
+
+    <!-- Evaluations Section -->
+    <section id="evaluations" class="section">
+      <h2 style="margin-bottom: 1.5rem;">Evaluations</h2>
+
+      <div class="filters">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input
+            type="text"
+            id="eval-search"
+            placeholder="Search evaluations..."
+            oninput="filterEvaluations()"
+          >
+        </div>
+        <select class="filter-select" id="status-filter" onchange="filterEvaluations()">
+          <option value="">All Statuses</option>
+          <option value="auto-graded">Auto-Graded</option>
+          <option value="pending">Pending Review</option>
+          <option value="finalized">Finalized</option>
+        </select>
+      </div>
+
+      <table class="evaluations-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Skill</th>
+            <th>Learner</th>
+            <th>Score</th>
+            <th>Grade</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="evaluations-list">
+          <!-- Evaluations will be loaded here -->
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Create Skill Section -->
+    <section id="create" class="section">
+      <h2 style="margin-bottom: 1.5rem;">Create New Skill</h2>
+
+      <form id="create-skill-form" onsubmit="createSkill(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Skill Name *</label>
+            <input type="text" class="form-input" name="name" required placeholder="e.g., Advanced React Patterns">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Slug *</label>
+            <input type="text" class="form-input" name="slug" required placeholder="e.g., advanced-react-patterns">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Short Description *</label>
+          <input type="text" class="form-input" name="description" required placeholder="1-2 sentence description">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Long Description</label>
+          <textarea class="form-textarea" name="longDescription" placeholder="Detailed description of the skill..."></textarea>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Category *</label>
+            <select class="form-select" name="category" required>
+              <option value="">Select Category</option>
+              <option value="ai-ml">AI/ML</option>
+              <option value="web-development">Web Development</option>
+              <option value="mobile-development">Mobile Development</option>
+              <option value="data-science">Data Science</option>
+              <option value="devops">DevOps</option>
+              <option value="prompt-engineering">Prompt Engineering</option>
+              <option value="ai-integration">AI Integration</option>
+              <option value="cybersecurity">Cybersecurity</option>
+              <option value="cloud-computing">Cloud Computing</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Level *</label>
+            <select class="form-select" name="level" required>
+              <option value="">Select Level</option>
+              <option value="foundational">Foundational</option>
+              <option value="intermediate">Intermediate</option>
+              <option value="advanced">Advanced</option>
+              <option value="expert">Expert</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Estimated Hours</label>
+            <input type="number" class="form-input" name="estimatedHours" value="10">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Tags (comma-separated)</label>
+          <input type="text" class="form-input" name="tags" placeholder="e.g., react, javascript, frontend">
+        </div>
+
+        <div class="actions">
+          <button type="submit" class="btn btn-primary">
+            <span>✨</span> Create Skill
+          </button>
+          <button type="button" class="btn btn-outline" onclick="resetForm()">
+            <span>🔄</span> Reset
+          </button>
+        </div>
+      </form>
+    </section>
+  </div>
+
+  <!-- Create Skill Modal -->
+  <div class="modal-overlay" id="create-modal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 class="modal-title">Create New Skill</h3>
+        <button class="close-btn" onclick="closeModal('create-modal')">&times;</button>
+      </div>
+      <form id="modal-skill-form" onsubmit="createSkillFromModal(event)">
+        <div class="form-group">
+          <label class="form-label">Skill Name *</label>
+          <input type="text" class="form-input" name="name" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Description *</label>
+          <textarea class="form-textarea" name="description" required></textarea>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Category</label>
+            <select class="form-select" name="category">
+              <option value="web-development">Web Development</option>
+              <option value="ai-ml">AI/ML</option>
+              <option value="prompt-engineering">Prompt Engineering</option>
+              <option value="ai-integration">AI Integration</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Level</label>
+            <select class="form-select" name="level">
+              <option value="foundational">Foundational</option>
+              <option value="intermediate" selected>Intermediate</option>
+              <option value="advanced">Advanced</option>
+              <option value="expert">Expert</option>
+            </select>
+          </div>
+        </div>
+        <div class="actions">
+          <button type="submit" class="btn btn-primary">Create Skill</button>
+          <button type="button" class="btn btn-outline" onclick="closeModal('create-modal')">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script>
+    // API Base URL
+    const API_BASE = 'http://localhost:3000/api';
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      loadDashboard();
+      loadSkills();
+      loadEvaluations();
+    });
+
+    // Tab Switching
+    function switchTab(tabId) {
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+
+      document.getElementById(tabId).classList.add('active');
+      event.target.classList.add('active');
+
+      if (tabId === 'dashboard') loadDashboard();
+      if (tabId === 'skills') loadSkills();
+      if (tabId === 'evaluations') loadEvaluations();
+    }
+
+    // Load Dashboard Stats
+    async function loadDashboard() {
+      try {
+        const [skillsRes, evalsRes] = await Promise.all([
+          fetch(`${API_BASE}/skills`),
+          fetch(`${API_BASE}/evaluations`)
+        ]);
+
+        const skills = await skillsRes.json();
+        const evals = await evalsRes.json();
+
+        const skillsData = skills.data || [];
+        const evalsData = evals.data || [];
+
+        document.getElementById('total-skills').textContent = skillsData.length;
+        document.getElementById('total-evaluations').textContent = evalsData.length;
+
+        if (evalsData.length > 0) {
+          const avgScore = Math.round(evalsData.reduce((sum, e) => sum + e.percentage, 0) / evalsData.length);
+          const passRate = Math.round((evalsData.filter(e => e.passed).length / evalsData.length) * 100);
+          document.getElementById('avg-score').textContent = `${avgScore}%`;
+          document.getElementById('pass-rate').textContent = `${passRate}%`;
+        }
+
+        // Show recent skills
+        const recentSkills = skillsData.slice(0, 3);
+        const recentContainer = document.getElementById('recent-skills');
+        recentContainer.innerHTML = recentSkills.map(skill => createSkillCard(skill)).join('');
+      } catch (error) {
+        showToast('Error loading dashboard', 'error');
+      }
+    }
+
+    // Load Skills
+    async function loadSkills() {
+      try {
+        const res = await fetch(`${API_BASE}/skills`);
+        const data = await res.json();
+        const container = document.getElementById('skills-list');
+
+        if (!data.data || data.data.length === 0) {
+          container.innerHTML = `
+            <div class="empty-state">
+              <div class="empty-state-icon">📚</div>
+              <p>No skills found. Create your first skill!</p>
+            </div>
+          `;
+          return;
+        }
+
+        container.innerHTML = data.data.map(skill => createSkillCard(skill)).join('');
+      } catch (error) {
+        showToast('Error loading skills', 'error');
+      }
+    }
+
+    // Create Skill Card HTML
+    function createSkillCard(skill) {
+      return `
+        <div class="skill-card" onclick="viewSkill('${skill.id}')">
+          <div class="skill-header">
+            <div>
+              <h3 class="skill-title">${skill.name}</h3>
+              <span class="skill-badge badge-${skill.level}">${skill.level}</span>
+            </div>
+          </div>
+          <p class="skill-description">${skill.description}</p>
+          <div class="skill-meta">
+            <div class="skill-meta-item">
+              <span>📁</span> ${skill.category}
+            </div>
+            <div class="skill-meta-item">
+              <span>⏱️</span> ${skill.estimatedHours || 0}h
+            </div>
+            <div class="skill-meta-item">
+              <span>📊</span> v${skill.version}
+            </div>
+          </div>
+          <div class="skill-tags">
+            ${(skill.tags || []).slice(0, 3).map(tag => `<span class="tag">${tag}</span>`).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    // Load Evaluations
+    async function loadEvaluations() {
+      try {
+        const res = await fetch(`${API_BASE}/evaluations`);
+        const data = await res.json();
+        const container = document.getElementById('evaluations-list');
+
+        if (!data.data || data.data.length === 0) {
+          container.innerHTML = `
+            <tr>
+              <td colspan="6" style="text-align: center; padding: 2rem;">
+                No evaluations yet
+              </td>
+            </tr>
+          `;
+          return;
+        }
+
+        container.innerHTML = data.data.slice(0, 20).map(eval => `
+          <tr>
+            <td>${new Date(eval.submittedAt).toLocaleDateString()}</td>
+            <td>${eval.skillName}</td>
+            <td>${eval.learnerName || 'Anonymous'}</td>
+            <td>${eval.percentage}%</td>
+            <td><span class="grade-badge grade-${eval.grade}">${eval.grade}</span></td>
+            <td>${eval.status}</td>
+          </tr>
+        `).join('');
+      } catch (error) {
+        showToast('Error loading evaluations', 'error');
+      }
+    }
+
+    // Filter Skills
+    function filterSkills() {
+      const search = document.getElementById('skill-search').value.toLowerCase();
+      const category = document.getElementById('category-filter').value;
+      const level = document.getElementById('level-filter').value;
+
+      const cards = document.querySelectorAll('#skills-list .skill-card');
+      cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        const matchSearch = !search || text.includes(search);
+        const matchCategory = !category || card.innerHTML.includes(category);
+        const matchLevel = !level || card.innerHTML.includes(`badge-${level}`);
+
+        card.style.display = (matchSearch && matchCategory && matchLevel) ? 'block' : 'none';
+      });
+    }
+
+    // Filter Evaluations
+    function filterEvaluations() {
+      // Implementation similar to filterSkills
+    }
+
+    // Create Skill
+    async function createSkill(event) {
+      event.preventDefault();
+      const form = event.target;
+      const formData = new FormData(form);
+
+      const skill = {
+        id: `skill-${Date.now()}`,
+        name: formData.get('name'),
+        slug: formData.get('slug'),
+        description: formData.get('description'),
+        longDescription: formData.get('longDescription'),
+        category: formData.get('category'),
+        level: formData.get('level'),
+        estimatedHours: parseFloat(formData.get('estimatedHours')) || 10,
+        tags: formData.get('tags')?.split(',').map(t => t.trim()) || [],
+        version: '1.0.0',
+        status: 'draft',
+        visibility: 'private',
+        passingScore: 70,
+        learningObjectives: [],
+        evaluationCriteria: [],
+        assessmentTypes: ['practical-coding'],
+        modules: [],
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString()
+      };
+
+      try {
+        const res = await fetch(`${API_BASE}/skills`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(skill)
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+          showToast('Skill created successfully!', 'success');
+          form.reset();
+          loadSkills();
+          loadDashboard();
+        } else {
+          showToast(data.error || 'Failed to create skill', 'error');
+        }
+      } catch (error) {
+        showToast('Error creating skill', 'error');
+      }
+    }
+
+    // Show Modal
+    function showCreateSkillModal() {
+      document.getElementById('create-modal').classList.add('active');
+    }
+
+    // Close Modal
+    function closeModal(modalId) {
+      document.getElementById(modalId).classList.remove('active');
+    }
+
+    // Create Skill from Modal
+    async function createSkillFromModal(event) {
+      event.preventDefault();
+      // Similar to createSkill but simpler
+      closeModal('create-modal');
+      loadSkills();
+    }
+
+    // Import Template
+    async function importTemplate() {
+      const template = prompt('Enter template name (e.g., prompt-engineering-fundamentals):');
+      if (!template) return;
+
+      try {
+        const res = await fetch(`${API_BASE}/skills/import/${template}`, {
+          method: 'POST'
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+          showToast(`Template "${template}" imported successfully!`, 'success');
+          loadSkills();
+          loadDashboard();
+        } else {
+          showToast(data.error || 'Template not found', 'error');
+        }
+      } catch (error) {
+        showToast('Error importing template', 'error');
+      }
+    }
+
+    // View Skill
+    function viewSkill(skillId) {
+      showToast(`Viewing skill: ${skillId}`, 'success');
+      // Navigate to skill detail page (to be implemented)
+    }
+
+    // Reset Form
+    function resetForm() {
+      document.getElementById('create-skill-form').reset();
+    }
+
+    // Show Toast
+    function showToast(message, type = 'success') {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.className = `toast ${type} show`;
+
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3000);
+    }
+  </script>
+</body>
+</html>

@@ -1,7 +1,7 @@
-# Developer Guide for Skills Evaluator
+# Developer Guide for Modern AI-Era Skills System
 
 ## Overview
-This guide provides instructions for developing, adding, evaluating, and updating skills in the Skills Evaluator system. The system follows the constitution principles of assessment-first approach, modular evaluation framework, and test-driven evaluation.
+This guide provides instructions for developing, adding, evaluating, and updating skills in the Modern AI-Era Skills System. The system follows the constitution principles of assessment-first approach, modular evaluation framework, test-driven evaluation, and skills-first philosophy over LLM-centric approaches.
 
 ## Core Principles
 1. **Assessment-First Approach**: Define evaluation criteria before implementation
