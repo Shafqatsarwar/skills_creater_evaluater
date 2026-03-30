@@ -7,7 +7,7 @@ import express from 'express';
 import path from 'path';
 import fs from 'fs';
 
-import { EvaluationEngine, LearnerProfile } from './engine/evaluation-engine';
+import { ConstitutionCompliantEvaluationEngine, LearnerProfile } from './engine/constitution-compliant-evaluation-engine';
 import { SkillCreator } from './cli/skill-creator';
 import { Skill, EvaluationResult, SkillQuery, EvaluationQuery } from './types/skill-types';
 
@@ -29,12 +29,13 @@ if (!fs.existsSync(dataDir)) {
   fs.mkdirSync(dataDir, { recursive: true });
 }
 
-// Initialize evaluation engine
-const evaluationEngine = new EvaluationEngine({
+// Initialize constitution-compliant evaluation engine
+const evaluationEngine = new ConstitutionCompliantEvaluationEngine({
   enableAIEvaluation: true,
-  enablePlagiarismCheck: false,
+  enablePlagiarismCheck: true,
   autoFeedback: true,
-  detailedRubricScoring: true
+  detailedRubricScoring: true,
+  constitutionComplianceEnforcement: true
 });
 
 // Load data from file
@@ -197,7 +198,7 @@ app.post('/api/skills', (req, res) => {
 
     // Check if skill already exists
     const existingIndex = data.skills.findIndex(
-      s => s.id === newSkill.id || s.slug === newSkill.slug
+      s => s.id === newSkill.id || (newSkill.slug && s.slug === newSkill.slug)
     );
 
     if (existingIndex >= 0) {

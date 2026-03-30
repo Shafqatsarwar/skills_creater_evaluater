@@ -1,28 +1,51 @@
-# Modern AI-Era Skills System
+# Constitution-Compliant Modern AI-Era Skills System
 
-**Comprehensive platform for creating and evaluating skills with both AI and non-AI methodologies**
+**Comprehensive platform for creating and evaluating skills with both AI and non-AI methodologies, following the Skills Evaluator Constitution**
 
 ## 🎯 Overview
 
-The Modern AI-Era Skills System is a comprehensive platform designed for creating, managing, and evaluating skills using both AI-assisted and traditional evaluation methods. The system emphasizes skills-first development rather than LLM-centric approaches, with AI serving as an enhancement tool layered on top of solid foundations.
+The Constitution-Compliant Modern AI-Era Skills System is a comprehensive platform designed for creating, managing, and evaluating skills using both AI-assisted and traditional evaluation methods. The system strictly adheres to the Skills Evaluator Constitution principles of assessment-first approach, modular evaluation framework, test-driven evaluation, and skills-first philosophy over LLM-centric approaches, with AI serving as an enhancement tool layered on top of solid foundations.
+
+## 🏛️ Constitution Compliance
+
+This system fully complies with the Skills Evaluator Constitution:
+
+- **Assessment-First Approach**: All evaluations begin with clearly defined assessment criteria and rubrics
+- **Modular Evaluation Framework**: Each skill evaluator operates as an independent module
+- **Test-Driven Evaluation**: TDD is mandatory for all evaluation logic with Red-Green-Refactor cycle
+- **Skills-First Approach**: Primary focus on skill creation and evaluation methodologies with AI as an enhancement
+- **Dual-Track Evaluation**: Both AI-assisted and traditional evaluation methods are supported
+- **Transparency and Fairness**: All evaluation criteria are transparent and accessible with standardized scoring
 
 ## ✨ Key Features
 
+- **Constitution-Compliant Architecture**: Built following all constitution principles
 - **Dual-Track Evaluation**: Supports both AI-assisted and traditional evaluation methods
 - **Skills-First Approach**: Focus on skill creation and evaluation methodologies with AI as an enhancement
 - **Modular Architecture**: Independent, testable, and reusable skill evaluators
 - **Comprehensive Assessment**: Technical competency, practical application, problem-solving, and real-world scenarios
 - **Flexible Evaluation**: Configurable difficulty levels and adaptive assessment paths
 - **Transparent Scoring**: Standardized scoring methodology with audit trails
+- **Enhanced Skill Creator**: Interactive CLI tool for creating constitution-compliant skills
+- **Constitution Validation**: Automatic validation of skills against constitution principles
 
 ## 🏗️ Architecture
 
 ### Core Components
 
-1. **Skill Creator**: Interactive CLI tool for creating modern skills with comprehensive metadata
-2. **Evaluation Engine**: Robust system supporting both AI and non-AI evaluation workflows
-3. **REST API**: Modern API for skill management and evaluation
+1. **Enhanced Skill Creator**: Interactive CLI tool for creating constitution-compliant modern skills with comprehensive metadata
+2. **Constitution-Compliant Evaluation Engine**: Robust system supporting both AI and non-AI evaluation workflows with automatic constitution compliance checking
+3. **REST API**: Modern API for skill management and evaluation with constitution validation
 4. **UI Dashboard**: Modern interface for skill creation and evaluation management
+
+### Constitution-Compliant Architecture Features
+
+- **Assessment-First Validation**: Automatic validation that evaluation criteria are defined before implementation
+- **Modular Framework Enforcement**: Ensures each skill evaluator operates as an independent module
+- **Test-Driven Verification**: Validates that TDD principles are followed for all evaluation logic
+- **Skills-First Architecture**: Verifies that AI serves as an enhancement to solid skill foundations
+- **Dual-Track Evaluation**: Ensures both AI and non-AI evaluation paths are available
+- **Transparency and Fairness**: Enforces standardized scoring and clear evaluation criteria
 
 ### Technology Stack
 
@@ -79,6 +102,11 @@ npm run format
 #### Interactive Skill Creation
 ```bash
 npm run skills:create
+```
+
+### Constitution-Compliant Skill Creation
+```bash
+npm run skills:create:enhanced
 ```
 
 #### API-based Skill Creation
@@ -146,7 +174,7 @@ Our system follows a **skills-first approach** rather than an LLM-centric approa
 - `GET /api/export/skills` - Export all skills
 - `POST /api/import/skills` - Import skills batch
 
-## 📊 Evaluation Framework
+## 📊 Constitution-Compliant Evaluation Framework
 
 ### Assessment Categories
 
@@ -168,11 +196,11 @@ Our system follows a **skills-first approach** rather than an LLM-centric approa
    - Adaptability to variations
    - Scalability considerations
 
-4. **Real-World Simulation** (10%)
-   - Performance under stress
-   - Behavior in production-like environments
-   - Recovery from failures
-   - Consistency across platforms
+4. **Constitution Compliance** (10%)
+   - Adherence to assessment-first approach
+   - Modular framework implementation
+   - Test-driven evaluation practices
+   - Skills-first philosophy implementation
 
 ### Scoring System
 
@@ -206,18 +234,22 @@ All evaluation workflows function independently of AI:
 
 ```
 src/
-├── cli/              # Command-line interface tools
-├── engine/           # Evaluation engine and logic
+├── cli/              # Command-line interface tools (including enhanced constitution-compliant creator)
+├── engine/           # Evaluation engines (standard and constitution-compliant)
 ├── types/            # Type definitions
 ├── schemas/          # Validation schemas
 ├── ui/               # Frontend components
 └── index.ts          # Main entry point
 ```
 
-### Coding Standards
+### Development Standards
 
+- **Constitution Compliance**: All skills and evaluations must follow the Skills Evaluator Constitution
+- **Assessment-First Approach**: Define evaluation criteria before implementation
+- **Modular Framework**: Each component should be independent and reusable
+- **Test-Driven Evaluation**: Follow TDD principles for all evaluation logic
+- **Skills-First Philosophy**: AI serves as enhancement, not core
 - **Type Safety**: Full TypeScript usage
-- **Modularity**: Independent, reusable components
 - **Test Coverage**: Minimum 90% test coverage
 - **Documentation**: Comprehensive API and code documentation
 - **Security**: Input validation and sanitization

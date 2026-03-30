@@ -11,6 +11,7 @@
     "lint": "eslint src --ext .ts",
     "format": "prettier --write \"src/**/*.ts\"",
     "skills:create": "ts-node src/cli/skill-creator.ts",
+    "skills:create:enhanced": "ts-node src/cli/enhanced-skill-creator.ts",
     "skills:list": "node dist/index.js list",
     "skills:evaluate": "node dist/index.js evaluate"
   },

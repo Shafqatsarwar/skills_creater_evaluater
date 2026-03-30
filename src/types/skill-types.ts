@@ -21,6 +21,14 @@ export type SkillCategory =
   | 'design'
   | 'business';
 
+export type EvaluationCriterionCategory =
+  | 'technical'
+  | 'conceptual'
+  | 'practical'
+  | 'creative'
+  | 'analytical'
+  | 'methodological';
+
 /**
  * Skill difficulty levels
  */
@@ -48,7 +56,7 @@ export interface EvaluationCriterion {
   id: string;
   name: string;
   description: string;
-  category: 'technical' | 'conceptual' | 'practical' | 'creative' | 'analytical';
+  category: EvaluationCriterionCategory;
   weight: number; // 0-1, must sum to 1 within category
   maxScore: number;
   rubric: RubricLevel[];

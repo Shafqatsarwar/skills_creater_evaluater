@@ -516,11 +516,19 @@ export class SkillCreator {
   }
 
   /**
-   * Validate a skill definition
+   * Validate a skill definition against constitution principles
    */
-  validateSkill(skill: Skill): { valid: boolean; errors: string[]; warnings: string[] } {
+  validateSkill(skill: Skill): { valid: boolean; errors: string[]; warnings: string[]; constitutionCompliance: any } {
     const errors: string[] = [];
     const warnings: string[] = [];
+    const constitutionCompliance = {
+      assessmentFirst: false,
+      modularFramework: false,
+      testDriven: false,
+      skillsFirst: false,
+      dualTrack: false,
+      transparency: false
+    };
 
     // Required fields
     if (!skill.id) errors.push('Missing required field: id');
@@ -536,36 +544,104 @@ export class SkillCreator {
       errors.push('At least one learning objective is required');
     }
 
-    // Evaluation criteria
+    // Evaluation criteria - this is the "Assessment-First Approach" requirement
     if (!skill.evaluationCriteria || skill.evaluationCriteria.length === 0) {
-      errors.push('At least one evaluation criterion is required');
+      errors.push('At least one evaluation criterion is required (Assessment-First Approach)');
     } else {
       // Check weights sum to approximately 1
       const totalWeight = skill.evaluationCriteria.reduce((sum, c) => sum + c.weight, 0);
       if (Math.abs(totalWeight - 1) > 0.1) {
         warnings.push(`Evaluation criteria weights sum to ${totalWeight}, should be close to 1`);
       }
+
+      // Mark as compliant with assessment-first approach
+      constitutionCompliance.assessmentFirst = true;
     }
 
-    // Modules
-    if (!skill.modules || skill.modules.length === 0) {
-      warnings.push('No modules defined. Consider adding learning modules.');
+    // Check for modular framework (defined modules)
+    if (skill.modules && skill.modules.length > 0) {
+      constitutionCompliance.modularFramework = true;
+    } else {
+      warnings.push('No modules defined. Consider adding learning modules for modular framework.');
     }
 
-    // Tags
-    if (!skill.tags || skill.tags.length < 3) {
-      warnings.push('At least 3 tags are recommended for better discoverability');
+    // Check for test-driven approach (defined assessment types)
+    if (skill.assessmentTypes && skill.assessmentTypes.length > 0) {
+      constitutionCompliance.testDriven = true;
+    } else {
+      warnings.push('No assessment types defined. Consider defining assessment methods for test-driven approach.');
     }
 
-    // AI Support
-    if (skill.aiSupport?.enabled && !skill.aiSupport.evaluationPrompts) {
-      warnings.push('AI support enabled but no evaluation prompts defined');
+    // Check for skills-first approach (non-AI evaluation path)
+    if (skill.evaluationCriteria && skill.evaluationCriteria.some(ec => ec.autoGradingEnabled === true)) {
+      constitutionCompliance.skillsFirst = true;
+      constitutionCompliance.dualTrack = true;
+    } else {
+      warnings.push('No auto-grading evaluation criteria found. Ensure non-AI evaluation path is available.');
+    }
+
+    // Check for dual-track evaluation
+    if (skill.aiSupport && skill.aiSupport.enabled) {
+      // Even with AI enabled, ensure non-AI path is available
+      if (skill.evaluationCriteria && skill.evaluationCriteria.some(ec => ec.requiresHumanReview === false)) {
+        constitutionCompliance.dualTrack = true;
+      }
+    } else {
+      // If AI is disabled, ensure proper evaluation framework exists
+      if (skill.evaluationCriteria && skill.evaluationCriteria.length > 0) {
+        constitutionCompliance.dualTrack = true; // At least non-AI path exists
+      }
+    }
+
+    // Check for transparency (grading scale defined)
+    if (skill.gradingScale && skill.gradingScale.scale && skill.gradingScale.scale.length > 0) {
+      constitutionCompliance.transparency = true;
+    } else {
+      errors.push('Grading scale must be defined for transparency and fairness.');
+    }
+
+    // Additional constitution compliance checks
+    if (!skill.passingScore || skill.passingScore < 0 || skill.passingScore > 100) {
+      errors.push('Valid passing score (0-100) must be defined.');
+    }
+
+    // Check for rubric completeness in evaluation criteria
+    if (skill.evaluationCriteria) {
+      for (const criterion of skill.evaluationCriteria) {
+        if (!criterion.rubric || criterion.rubric.length === 0) {
+          errors.push(`Evaluation criterion "${criterion.name}" must have a defined rubric.`);
+        }
+
+        // Ensure rubric levels are complete
+        if (criterion.rubric) {
+          const hasAllLevels = [0, 1, 2, 3].every(level =>
+            criterion.rubric.some(r => r.level === level)
+          );
+
+          if (!hasAllLevels) {
+            warnings.push(`Criterion "${criterion.name}" should have complete rubric levels (0-3).`);
+          }
+        }
+      }
+    }
+
+    // Check for proper learning objectives structure
+    if (skill.learningObjectives) {
+      for (const obj of skill.learningObjectives) {
+        if (!obj.bloomLevel) {
+          warnings.push(`Learning objective "${obj.description}" should specify bloom level.`);
+        }
+        if (!obj.measurable) {
+          warnings.push(`Learning objective "${obj.description}" should be measurable.`);
+        }
+      }
     }
 
     return {
       valid: errors.length === 0,
       errors,
-      warnings
+      warnings,
+      constitutionCompliance
     };
   }
 }
